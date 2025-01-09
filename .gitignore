@@ -8,3 +8,4 @@ node_modules/
 midscene_run/report
 midscene_run/dump
 midscene_run/tmp
+midscene_run/cache
