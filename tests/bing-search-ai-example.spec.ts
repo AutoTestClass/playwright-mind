@@ -2,18 +2,17 @@ import { expect } from "@playwright/test";
 import { test } from "./fixture/fixture";
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("https://www.baidu.com");
-  await page.waitForLoadState("networkidle");
+  await page.goto("https://cn.bing.com");
 });
 
-test("baidu search case", async ({ page, ai, aiQuery, aiAssert }) => {
+test('search keyword on bing', async ({ page, ai, aiQuery, aiAssert }) => {
   // 👀 输入关键字，执行搜索
-  await ai('在搜索框输入“playwright”，敲回车');
+  await ai('搜索输入框输入"playwright"关键字，并回车');
   await page.waitForTimeout(3000);
 
   // 👀 找到列表里耳机相关的信息
   const items = await aiQuery(
-    'string[], 搜索结果列表中包含“playwright”相关的标题'
+    'string[], 搜索结果列表中包含"playwright"相关的标题'
   );
 
   console.log("search result", items);
@@ -22,5 +21,5 @@ test("baidu search case", async ({ page, ai, aiQuery, aiAssert }) => {
   expect(items?.length).toBeGreaterThan(1);
 
   // 👀 用 AI 断言
-  await aiAssert("检查搜索结果列表第一条标题是否包含“playwright”字符串");
+  await aiAssert('检查搜索结果列表第一条标题是否包含"playwright"字符串');
 });
