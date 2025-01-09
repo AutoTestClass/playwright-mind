@@ -1,12 +1,12 @@
 import { expect } from "@playwright/test";
-import { test } from "./fixture";
+import { test } from "./fixture/fixture";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("https://www.baidu.com");
   await page.waitForLoadState("networkidle");
 });
 
-test("search headphone on baidu", async ({ page, ai, aiQuery, aiAssert }) => {
+test("baidu search case", async ({ page, ai, aiQuery, aiAssert }) => {
   // 👀 输入关键字，执行搜索
   await ai('在搜索框输入“playwright”，敲回车');
   await page.waitForTimeout(3000);
