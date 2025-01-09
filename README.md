@@ -38,7 +38,7 @@ npx playwright install
 
 使用其他模型：https://midscenejs.com/zh/model-provider.html
 
-修改 `playwright.config.ts` 文件中的配置：
+在 `.env` 文件中配置环境变量：
 
 ```ts
 export OPENAI_API_KEY="sk-your-key"
@@ -48,7 +48,9 @@ export MIDSCENE_MODEL_NAME="qwen-vl-max-latest"
 
 ## 使用示例
 
-在项目的`test`目录，附带了`baidu-search-ai-example.spec.ts`例子。
+在项目的`test`目录，附带了`bing-search-ai-example.spec.ts`例子。
+
+__示例代码__
 
 ```ts
 import { expect } from "@playwright/test";
@@ -78,7 +80,13 @@ test('search keyword on bing', async ({ page, ai, aiQuery, aiAssert }) => {
 });
 ```
 
-运行测试：
+三种关键方法：交互（.ai, .aiAction）, 提取 (.aiQuery), 断言 (.aiAssert)。
+
+* `.ai`方法描述步骤并执行交互
+* `.aiQuery` 从 UI 中“理解”并提取数据，返回值是 JSON 格式，你可以尽情描述想要的数据结构
+* `.aiAssert` 来执行断言
+
+__运行测试__
 
 ```shell
 npx playwright test --headed tests/bing-search-ai-example.spec.ts
@@ -95,3 +103,7 @@ Midscene - report file updated: /Users/fnngj/zhpro/github/playwright-mind/midsce
   1 passed (55.3s)
 Midscene - report file updated: /Users/fnngj/zhpro/github/playwright-mind/midscene_run/report/playwright-merged-2025-01-10_00-44-50-464.html
 ```
+
+__测试报告__
+
+![](./images/midscene-report.png)
