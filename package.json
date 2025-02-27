@@ -9,10 +9,11 @@
   "license": "ISC",
   "devDependencies": {
     "@midscene/web": "^0.9.2",
-    "@playwright/test": "^1.49.1",
+    "@playwright/test": "^1.50.1",
     "@types/node": "^22.10.5"
   },
   "dependencies": {
+    "@executeautomation/playwright-mcp-server": "^0.2.7",
     "dotenv": "^16.4.7",
     "playwright-mind": "file:"
   }
